@@ -2,7 +2,7 @@
 
 A modern, customizable landing page template for SaaS products built with Next.js, React, and Tailwind CSS. This template provides a solid foundation for quickly launching your SaaS product with a professional and attractive landing page.
 
-![[demo.png]]
+![Demo Screenshot](demo.png)
 
 ## Features
 
