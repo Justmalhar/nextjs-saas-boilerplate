@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import { motion, useScroll } from "framer-motion";
-import { Check, Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { Check, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -249,8 +249,7 @@ export default function Home({
   content?: LandingPageContent;
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const { scrollYProgress } = useScroll();
+  const [currentTestimonial] = useState(0);
 
   useEffect(() => {
     const handleResize = () => setIsMenuOpen(window.innerWidth >= 768);
