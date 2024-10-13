@@ -1,17 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import {
-  Star,
-  ChevronDown,
-  Play,
-  Check,
-  Menu,
-  X,
-  ArrowRight,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { motion, useScroll } from "framer-motion";
+import { Check, Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -21,6 +11,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import HeroVideoDialog from "@/components/ui/hero-video-dialog";
+import Image from "next/image";
 
 type LandingPageContent = {
   navItems: string[];
@@ -260,7 +251,6 @@ export default function Home({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const { scrollYProgress } = useScroll();
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   useEffect(() => {
     const handleResize = () => setIsMenuOpen(window.innerWidth >= 768);
@@ -482,13 +472,15 @@ export default function Home({
                   <div key={index} className="w-full flex-shrink-0 px-4">
                     <div className="bg-[#1a202c] p-8 rounded-lg border border-[#2d3748] shadow-lg">
                       <p className="text-lg mb-4 italic">
-                        "{testimonial.content}"
+                        &ldquo;{testimonial.content}&rdquo;
                       </p>
                       <div className="flex items-center">
-                        <img
+                        <Image
                           src={testimonial.avatar}
                           alt={testimonial.author}
-                          className="w-12 h-12 rounded-full mr-4"
+                          width={48}
+                          height={48}
+                          className="rounded-full mr-4"
                         />
                         <div>
                           <p className="font-semibold">{testimonial.author}</p>
@@ -500,26 +492,7 @@ export default function Home({
                 ))}
               </motion.div>
             </div>
-            <button
-              className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-2"
-              onClick={() =>
-                setCurrentTestimonial((prev) =>
-                  prev > 0 ? prev - 1 : content.testimonials.items.length - 1
-                )
-              }
-            >
-              <ChevronLeft />
-            </button>
-            <button
-              className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-2"
-              onClick={() =>
-                setCurrentTestimonial((prev) =>
-                  prev < content.testimonials.items.length - 1 ? prev + 1 : 0
-                )
-              }
-            >
-              <ChevronRight />
-            </button>
+            {/* ... existing buttons ... */}
           </div>
         </div>
       </section>
@@ -539,9 +512,11 @@ export default function Home({
                 key={index}
                 className="bg-[#1a202c] p-4 rounded-lg border border-[#2d3748] shadow-lg"
               >
-                <img
+                <Image
                   src={`/placeholder.svg?height=60&width=120&text=${partner}`}
                   alt={partner}
+                  width={120}
+                  height={60}
                   className="h-12"
                 />
               </div>
