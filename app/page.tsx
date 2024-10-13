@@ -243,13 +243,10 @@ const sampleContent: LandingPageContent = {
   },
 };
 
-export default function Home({
-  content = sampleContent,
-}: {
-  content?: LandingPageContent;
-}) {
+export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentTestimonial] = useState(0);
+  const content: LandingPageContent = sampleContent;
 
   useEffect(() => {
     const handleResize = () => setIsMenuOpen(window.innerWidth >= 768);
