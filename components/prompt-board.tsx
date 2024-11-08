@@ -60,7 +60,7 @@ type Column = {
 
 const STORAGE_KEY = "ai_prompt_board_data";
 
-export function PromptBoardComponent() {
+export default function PromptBoard() {
   const [columns, setColumns] = useState<Column[]>([
     { id: "todo", title: "To Do", cards: [] },
     { id: "inprogress", title: "In Progress", cards: [] },
