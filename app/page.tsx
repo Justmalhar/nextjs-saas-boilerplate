@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Check, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import Link from "next/link";
 import {
   Accordion,
   AccordionContent,
@@ -79,167 +80,166 @@ type LandingPageContent = {
 };
 
 const sampleContent: LandingPageContent = {
-  navItems: ["Home", "Features", "Pricing", "Testimonials", "Contact"],
+  navItems: ["Home", "Features", "Board", "About"],
   hero: {
-    headline: "Elevate Your Business with CloudPeak",
+    headline: "AI Prompt Board",
     subheadline:
-      "Streamline your workflow, boost productivity, and scale your operations with our cutting-edge SaaS solution",
-    ctaText: "Start Free Trial",
+      "An open-source project that helps you manage and execute AI prompts with ease",
+    ctaText: "Get Started",
   },
   features: {
-    title: "Powerful Features to Supercharge Your Workflow",
+    title: "Powerful Features for AI Prompt Management",
     description:
-      "CloudPeak offers a comprehensive suite of tools designed to enhance your productivity and streamline your business processes.",
+      "AI Prompt Board offers an intuitive interface to organize, execute and manage your AI prompts efficiently.",
     items: [
       {
-        icon: "🚀",
-        title: "Lightning-Fast Performance",
+        icon: "🎯",
+        title: "Drag & Drop Interface",
         description:
-          "Experience unparalleled speed and efficiency in all your operations.",
+          "Easily organize your prompts across different stages using our intuitive drag and drop interface.",
       },
       {
-        icon: "🔒",
-        title: "Bank-Grade Security",
+        icon: "⚡",
+        title: "Real-time Execution",
         description:
-          "Rest easy knowing your data is protected by state-of-the-art security measures.",
+          "Execute prompts instantly and see results in real-time using OpenAI's powerful models.",
+      },
+      {
+        icon: "📋",
+        title: "Markdown Preview",
+        description:
+          "Preview and download your AI-generated content in markdown format.",
       },
       {
         icon: "🔄",
-        title: "Seamless Integrations",
+        title: "Progress Tracking",
         description:
-          "Connect with your favorite tools and services for a unified workflow.",
-      },
-      {
-        icon: "📊",
-        title: "Advanced Analytics",
-        description:
-          "Gain deep insights into your business performance with our powerful analytics tools.",
+          "Track the progress of your prompts from Todo through In Progress to Done.",
       },
     ],
   },
   pricing: {
-    title: "Flexible Pricing Plans",
-    description: "Choose the perfect plan for your business needs",
+    title: "Open Source",
+    description: "Free and open source forever",
     plans: [
       {
-        name: "Starter",
-        price: 49,
+        name: "Community",
+        price: 0,
         features: [
-          "Up to 5 users",
-          "10GB storage",
-          "Basic analytics",
-          "Email support",
+          "Unlimited prompts",
+          "OpenAI/OpenRouter support",
+          "Markdown export",
+          "Community support",
         ],
-        ctaText: "Start Free Trial",
+        ctaText: "View on GitHub",
       },
       {
-        name: "Professional",
-        price: 99,
+        name: "Self-Hosted",
+        price: 0,
         features: [
-          "Up to 20 users",
-          "50GB storage",
-          "Advanced analytics",
-          "Priority support",
+          "All Community features",
+          "Custom deployment",
+          "API key management",
+          "GitHub issues support",
         ],
-        ctaText: "Start Free Trial",
+        ctaText: "Clone Repository",
         popular: true,
       },
       {
         name: "Enterprise",
-        price: 199,
+        price: 0,
         features: [
-          "Unlimited users",
-          "500GB storage",
-          "Custom analytics",
-          "24/7 dedicated support",
+          "All Self-Hosted features",
+          "Custom development",
+          "Priority support",
+          "Dedicated hosting",
         ],
-        ctaText: "Contact Sales",
+        ctaText: "Contact Us",
       },
     ],
   },
   testimonials: {
-    title: "What Our Customers Say",
+    title: "Community Feedback",
     items: [
       {
         content:
-          "CloudPeak has revolutionized the way we manage our projects. The efficiency gains are truly remarkable.",
-        author: "Jane Cooper",
-        role: "CEO, TechCorp",
+          "The drag and drop interface makes managing AI prompts so much easier. Great open source tool!",
+        author: "Alex Chen",
+        role: "AI Developer",
         avatar: "/placeholder.svg?height=100&width=100",
       },
       {
         content:
-          "The analytics features have given us invaluable insights into our business operations. Highly recommended!",
-        author: "Alex Johnson",
-        role: "CTO, InnovateCo",
+          "Love how I can organize my prompts in different stages and track their progress.",
+        author: "Maria Garcia",
+        role: "Content Creator",
         avatar: "/placeholder.svg?height=100&width=100",
       },
       {
         content:
-          "Customer support is top-notch. They're always there when we need them, no matter the issue.",
-        author: "Sarah Williams",
-        role: "Operations Manager, GlobalTech",
+          "The markdown preview feature is super helpful for reviewing AI-generated content.",
+        author: "James Wilson",
+        role: "Technical Writer",
         avatar: "/placeholder.svg?height=100&width=100",
       },
     ],
   },
   integrations: {
-    title: "Seamless Integrations",
+    title: "Powered By",
     description:
-      "CloudPeak works harmoniously with your favorite tools and services",
+      "Built with modern technologies for the best development experience",
     partners: [
-      "Slack",
-      "Google Workspace",
-      "Microsoft 365",
-      "Salesforce",
-      "Jira",
-      "Zendesk",
-      "GitHub",
-      "Trello",
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "OpenAI",
+      "Framer Motion",
+      "Radix UI",
+      "Hello Pangea DND",
     ],
   },
   faq: {
     title: "Frequently Asked Questions",
     items: [
       {
-        question: "How does the free trial work?",
+        question: "How do I get started?",
         answer:
-          "Our free trial gives you full access to all features for 14 days. No credit card required.",
+          "Clone the repository, install dependencies, and add your OpenAI API key in the settings.",
       },
       {
-        question: "Can I integrate CloudPeak with my existing tools?",
+        question: "Which AI models are supported?",
         answer:
-          "Yes, CloudPeak offers seamless integration with a wide range of popular business tools and platforms.",
+          "Currently we support GPT-4o and GPT-4o Mini through the OpenAI API.",
       },
       {
-        question: "Is my data secure with CloudPeak?",
+        question: "Can I contribute to the project?",
         answer:
-          "Absolutely. We use industry-leading encryption and security measures to protect your data.",
+          "Yes! We welcome contributions. Check our GitHub repository for contribution guidelines.",
       },
       {
-        question: "Do you offer customer support?",
+        question: "Is there a hosted version available?",
         answer:
-          "Yes, we provide 24/7 customer support via chat, email, and phone for all our customers.",
+          "Currently, AI Prompt Board is self-hosted only. You can deploy it on your preferred hosting platform.",
       },
     ],
   },
   cta: {
-    title: "Ready to Transform Your Business?",
+    title: "Ready to Manage Your AI Prompts?",
     description:
-      "Join thousands of satisfied customers and start your journey with CloudPeak today.",
-    ctaText: "Start Your Free Trial",
+      "Get started with AI Prompt Board today and streamline your prompt management workflow.",
+    ctaText: "View on GitHub",
   },
   demo: {
-    title: "Request a Free Demo",
+    title: "Contact Us",
     description:
-      "See the power of CloudPeak in action. Schedule your personalized demo today.",
+      "Have questions or suggestions? Get in touch with the development team.",
     fields: [
       { name: "name", placeholder: "Your Name", type: "text" },
       { name: "email", placeholder: "Your Email", type: "email" },
-      { name: "company", placeholder: "Company Name", type: "text" },
       { name: "message", placeholder: "Your Message", type: "textarea" },
     ],
-    ctaText: "Schedule Demo",
+    ctaText: "Send Message",
   },
 };
 
@@ -320,9 +320,16 @@ export default function Home() {
               </li>
             ))}
           </ul>
-          <Button className="hidden md:block bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 py-2 transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
-            Sign In
-          </Button>
+          <div className="hidden md:flex gap-4">
+            <Link href="/app">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 py-2 transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+                Launch App
+              </Button>
+            </Link>
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 py-2 transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+              Sign In
+            </Button>
+          </div>
         </div>
       </nav>
 
@@ -344,12 +351,14 @@ export default function Home() {
             {content.hero.subheadline}
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button
-              size="lg"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.5)]"
-            >
-              {content.hero.ctaText}
-            </Button>
+            <Link href="/app">
+              <Button
+                size="lg"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.5)]"
+              >
+                {content.hero.ctaText}
+              </Button>
+            </Link>
           </motion.div>
         </div>
         <div className="mt-16 max-w-5xl mx-auto">
@@ -488,7 +497,6 @@ export default function Home() {
                 ))}
               </motion.div>
             </div>
-            {/* ... existing buttons ... */}
           </div>
         </div>
       </section>
