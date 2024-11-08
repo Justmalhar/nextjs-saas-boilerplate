@@ -21,7 +21,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -186,7 +185,7 @@ export default function PromptBoard() {
           if (col.id === "done") {
             return {
               ...col,
-              cards: [...col.cards, { ...card, result }],
+              cards: [...col.cards, { ...card, result: result || undefined }],
             };
           }
           return col;
@@ -197,7 +196,7 @@ export default function PromptBoard() {
         title: "Success",
         description: "Prompt completed successfully",
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       // Move back to Todo
       setColumns((prev) =>
         prev.map((col) => {
@@ -217,9 +216,12 @@ export default function PromptBoard() {
         }),
       );
 
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to run prompt";
+
       toast({
         title: "Error",
-        description: error.message || "Failed to run prompt",
+        description: errorMessage,
         variant: "destructive",
       });
     }
@@ -368,7 +370,7 @@ export default function PromptBoard() {
                                       <>
                                         <Button
                                           onClick={() =>
-                                            handlePreview(card.result)
+                                            handlePreview(card.result || "")
                                           }
                                           className="bg-orange-400 text-white hover:bg-orange-500"
                                         >
