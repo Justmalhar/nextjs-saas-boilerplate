@@ -1,4 +1,4 @@
-import PromptBoard from "@/components/ui/prompt-board";
+import PromptBoard from "@/components/prompt-board";
 
 export default function AppPage() {
   return (
