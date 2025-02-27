@@ -1,0 +1,57 @@
+.soundWave {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.3);
+  border-radius: 0.5rem;
+  padding: 10px;
+}
+
+.bar {
+  background: #f32968;
+  margin: 0 1px;
+  width: 3px;
+  transition: height 0.1s ease;
+}
+
+@keyframes wave-sm {
+  0% {
+    opacity: 0.35;
+    height: 10%;
+  }
+  100% {
+    opacity: 1;
+    height: 25%;
+  }
+}
+
+@keyframes wave-md {
+  0% {
+    opacity: 0.35;
+    height: 15%;
+  }
+  100% {
+    opacity: 1;
+    height: 50%;
+  }
+}
+
+@keyframes wave-lg {
+  0% {
+    opacity: 0.35;
+    height: 15%;
+  }
+  100% {
+    opacity: 1;
+    height: 100%;
+  }
+}
+
+.barWave {
+  animation-name: wave-lg;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+

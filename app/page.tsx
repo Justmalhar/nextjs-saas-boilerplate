@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Check, Menu, X } from "lucide-react";
+import { Check, Menu, X, Mic, FileAudio, Headphones, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/accordion";
 import HeroVideoDialog from "@/components/ui/hero-video-dialog";
 import Image from "next/image";
+import Link from "next/link";
 
 type LandingPageContent = {
   navItems: string[];
@@ -79,167 +80,146 @@ type LandingPageContent = {
 };
 
 const sampleContent: LandingPageContent = {
-  navItems: ["Home", "Features", "Pricing", "Testimonials", "Contact"],
+  navItems: ["Features", "Pricing", "Testimonials", "GitHub"],
   hero: {
-    headline: "Elevate Your Business with CloudPeak",
+    headline: "Transform Speech to Text with Whisper.dev",
     subheadline:
-      "Streamline your workflow, boost productivity, and scale your operations with our cutting-edge SaaS solution",
-    ctaText: "Start Free Trial",
+      "Open-source voice transcription that's accurate, fast, and accessible for developers and users alike",
+    ctaText: "Try for free",
   },
   features: {
-    title: "Powerful Features to Supercharge Your Workflow",
+    title: "Powerful Voice Transcription Features",
     description:
-      "CloudPeak offers a comprehensive suite of tools designed to enhance your productivity and streamline your business processes.",
+      "Whisper.dev offers state-of-the-art speech recognition technology in a simple, open-source package.",
     items: [
       {
-        icon: "🚀",
-        title: "Lightning-Fast Performance",
+        icon: "🎯",
+        title: "High Accuracy Transcription",
         description:
-          "Experience unparalleled speed and efficiency in all your operations.",
+          "Industry-leading speech recognition accuracy across multiple languages and accents.",
       },
       {
-        icon: "🔒",
-        title: "Bank-Grade Security",
+        icon: "⚡",
+        title: "Real-Time Processing",
         description:
-          "Rest easy knowing your data is protected by state-of-the-art security measures.",
+          "Convert speech to text in real-time with minimal latency for immediate results.",
       },
       {
-        icon: "🔄",
-        title: "Seamless Integrations",
+        icon: "🔌",
+        title: "Developer-Friendly API",
         description:
-          "Connect with your favorite tools and services for a unified workflow.",
+          "Simple integration with your applications through our well-documented API.",
       },
       {
-        icon: "📊",
-        title: "Advanced Analytics",
+        icon: "🌐",
+        title: "Multi-Language Support",
         description:
-          "Gain deep insights into your business performance with our powerful analytics tools.",
+          "Transcribe audio in over 50 languages with automatic language detection.",
       },
     ],
   },
   pricing: {
-    title: "Flexible Pricing Plans",
-    description: "Choose the perfect plan for your business needs",
+    title: "Open Source & Free",
+    description: "Bring your own OpenAI API key and get unlimited transcriptions",
     plans: [
       {
-        name: "Starter",
-        price: 49,
+        name: "Free Version",
+        price: 0,
         features: [
-          "Up to 5 users",
-          "10GB storage",
-          "Basic analytics",
-          "Email support",
+          "Unlimited transcriptions",
+          "Bring your own API key", 
+          "MIT Licensed",
+          "Full source code access",
+          "1 Click Deployment to Vercel",
+          "Community support"
         ],
-        ctaText: "Start Free Trial",
-      },
-      {
-        name: "Professional",
-        price: 99,
-        features: [
-          "Up to 20 users",
-          "50GB storage",
-          "Advanced analytics",
-          "Priority support",
-        ],
-        ctaText: "Start Free Trial",
-        popular: true,
-      },
-      {
-        name: "Enterprise",
-        price: 199,
-        features: [
-          "Unlimited users",
-          "500GB storage",
-          "Custom analytics",
-          "24/7 dedicated support",
-        ],
-        ctaText: "Contact Sales",
-      },
+        ctaText: "Get Started",
+      }
     ],
   },
   testimonials: {
-    title: "What Our Customers Say",
+    title: "Community Feedback",
     items: [
       {
         content:
-          "CloudPeak has revolutionized the way we manage our projects. The efficiency gains are truly remarkable.",
-        author: "Jane Cooper",
-        role: "CEO, TechCorp",
+          "Whisper.dev has transformed our podcast production workflow. The transcription accuracy is incredible.",
+        author: "Alex Chen",
+        role: "Podcast Producer",
         avatar: "/placeholder.svg?height=100&width=100",
       },
       {
         content:
-          "The analytics features have given us invaluable insights into our business operations. Highly recommended!",
-        author: "Alex Johnson",
-        role: "CTO, InnovateCo",
+          "As a developer, I appreciate how easy it was to integrate Whisper.dev into our accessibility tools.",
+        author: "Maya Patel",
+        role: "Software Engineer",
         avatar: "/placeholder.svg?height=100&width=100",
       },
       {
         content:
-          "Customer support is top-notch. They're always there when we need them, no matter the issue.",
-        author: "Sarah Williams",
-        role: "Operations Manager, GlobalTech",
+          "The multi-language support has been a game-changer for our international content team.",
+        author: "Thomas Weber",
+        role: "Content Director",
         avatar: "/placeholder.svg?height=100&width=100",
       },
     ],
   },
   integrations: {
-    title: "Seamless Integrations",
+    title: "Works With Your Stack",
     description:
-      "CloudPeak works harmoniously with your favorite tools and services",
+      "Whisper.dev integrates seamlessly with popular development tools and platforms",
     partners: [
-      "Slack",
-      "Google Workspace",
-      "Microsoft 365",
-      "Salesforce",
-      "Jira",
-      "Zendesk",
-      "GitHub",
-      "Trello",
+      "React",
+      "Node.js",
+      "Python",
+      "Docker",
+      "VS Code",
+      "Jupyter",
+      "GitHub Actions",
+      "AWS",
     ],
   },
   faq: {
     title: "Frequently Asked Questions",
     items: [
       {
-        question: "How does the free trial work?",
+        question: "Is Whisper.dev really free to use?",
         answer:
-          "Our free trial gives you full access to all features for 14 days. No credit card required.",
+          "Yes, Whisper.dev is completely free and open-source under the MIT license. You can use it for personal or commercial projects without restrictions.",
       },
       {
-        question: "Can I integrate CloudPeak with my existing tools?",
+        question: "How accurate is the speech recognition?",
         answer:
-          "Yes, CloudPeak offers seamless integration with a wide range of popular business tools and platforms.",
+          "Whisper.dev achieves state-of-the-art accuracy rates across multiple languages and can handle various accents, background noise, and technical terminology.",
       },
       {
-        question: "Is my data secure with CloudPeak?",
+        question: "Can I contribute to the project?",
         answer:
-          "Absolutely. We use industry-leading encryption and security measures to protect your data.",
+          "Absolutely! We welcome contributions from the community. Check out our GitHub repository for contribution guidelines and open issues.",
       },
       {
-        question: "Do you offer customer support?",
+        question: "What languages are supported?",
         answer:
-          "Yes, we provide 24/7 customer support via chat, email, and phone for all our customers.",
+          "Whisper.dev supports over 50 languages including English, Spanish, French, German, Japanese, Chinese, and many more, with automatic language detection.",
       },
     ],
   },
   cta: {
-    title: "Ready to Transform Your Business?",
+    title: "Ready to Transform Speech to Text?",
     description:
-      "Join thousands of satisfied customers and start your journey with CloudPeak today.",
-    ctaText: "Start Your Free Trial",
+      "Join our open-source community and start using Whisper.dev today.",
+    ctaText: "Get Started Now",
   },
   demo: {
-    title: "Request a Free Demo",
+    title: "Try Whisper.dev",
     description:
-      "See the power of CloudPeak in action. Schedule your personalized demo today.",
+      "Upload an audio file or record your voice to see Whisper.dev in action.",
     fields: [
-      { name: "name", placeholder: "Your Name", type: "text" },
-      { name: "email", placeholder: "Your Email", type: "email" },
-      { name: "company", placeholder: "Company Name", type: "text" },
-      { name: "message", placeholder: "Your Message", type: "textarea" },
+      { name: "name", placeholder: "Your Name (optional)", type: "text" },
+      { name: "email", placeholder: "Your Email (optional)", type: "email" },
+      { name: "audioFile", placeholder: "Upload Audio File", type: "file" },
+      { name: "message", placeholder: "Feedback (optional)", type: "textarea" },
     ],
-    ctaText: "Schedule Demo",
+    ctaText: "Transcribe Now",
   },
 };
 
@@ -256,9 +236,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#030712] text-white font-sans">
+    <div className="min-h-screen bg-[#000000] text-white font-sans">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#030712]/80 backdrop-blur-md border-b border-[#1e2433]">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#000000]/80 backdrop-blur-md border-b border-[#333333]">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="text-2xl font-bold text-white flex items-center">
             <svg
@@ -266,30 +246,39 @@ export default function Home() {
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              aria-labelledby="whisperLogoTitle"
             >
+              <title id="whisperLogoTitle">Whisper.dev Logo</title>
               <path
-                d="M12 2L2 7L12 12L22 7L12 2Z"
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
-                d="M2 17L12 22L22 17"
+                d="M8 12a4 4 0 0 1 8 0"
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
-                d="M2 12L12 17L22 12"
+                d="M16 12a4 4 0 0 1-8 0"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M12 16v4"
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
             </svg>
-            CloudPeak
+            Whisper.dev
           </div>
           <div className="md:hidden">
             <Button
@@ -307,10 +296,10 @@ export default function Home() {
           <ul
             className={`md:flex space-y-4 md:space-y-0 md:space-x-6 ${
               isMenuOpen ? "block" : "hidden"
-            } absolute md:relative top-full left-0 right-0 bg-[#030712] md:bg-transparent p-4 md:p-0`}
+            } absolute md:relative top-full left-0 right-0 bg-[#000000] md:bg-transparent p-4 md:p-0`}
           >
-            {content.navItems.map((item, index) => (
-              <li key={index}>
+            {content.navItems.map((item) => (
+              <li key={`nav-${item.toLowerCase()}`}>
                 <a
                   href={`#${item.toLowerCase()}`}
                   className="text-gray-300 hover:text-white transition-colors"
@@ -320,8 +309,9 @@ export default function Home() {
               </li>
             ))}
           </ul>
-          <Button className="hidden md:block bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 py-2 transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
-            Sign In
+          <Button className="md:flex md:items-center bg-[#333333] hover:bg-[#4D4D4D] text-white rounded-full px-3 md:px-6 py-2 transition-all duration-300 border border-[#666666]">
+            <Github className="w-4 h-4 md:mr-2" />
+            <span className="hidden md:block">GitHub</span>
           </Button>
         </div>
       </nav>
@@ -329,26 +319,23 @@ export default function Home() {
       {/* Hero Section */}
       <section id="home" className="relative pt-32 pb-20 px-4 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900 via-[#030712] to-[#030712] opacity-60" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#333333] via-[#1A1A1A] to-[#000000] opacity-60" />
         </div>
         <div className="container mx-auto text-center relative z-10">
           <motion.h1
-            className="text-4xl md:text-6xl font-bold mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600"
+            className="text-4xl md:text-6xl font-bold mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-[#FFFFFF] to-[#B3B3B3]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             {content.hero.headline}
           </motion.h1>
-          <p className="text-xl mb-8 text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl mb-8 text-[#B3B3B3] max-w-2xl mx-auto">
             {content.hero.subheadline}
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button
-              size="lg"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.5)]"
-            >
-              {content.hero.ctaText}
+            <Button size="lg" className="mx-auto bg-[#333333] hover:bg-[#4D4D4D] text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 border border-[#666666] flex items-center">
+              <Link href="/app" className="flex items-center"><Mic className="w-5 h-5 mr-2" />{content.hero.ctaText}</Link>
             </Button>
           </motion.div>
         </div>
@@ -358,7 +345,7 @@ export default function Home() {
               className="dark:hidden block"
               animationStyle="from-center"
               videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
-              thumbnailSrc="https://startup-template-sage.vercel.app/hero-light.png"
+              thumbnailSrc="/hero-light.png"
               thumbnailAlt="Hero Video"
             />
           </div>
@@ -366,26 +353,26 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 px-4 bg-[#0d1117]">
+      <section id="features" className="py-20 px-4 bg-[#1A1A1A]">
         <div className="container mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             {content.features.title}
           </h2>
-          <p className="text-xl text-center mb-12 text-gray-400">
+          <p className="text-xl text-center mb-12 text-[#999999]">
             {content.features.description}
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {content.features.items.map((feature, index) => (
+            {content.features.items.map((feature, i) => (
               <motion.div
-                key={index}
-                className="bg-[#1a202c] p-6 rounded-lg border border-[#2d3748] shadow-lg"
+                key={`feature-${feature.title.toLowerCase().replace(/\s+/g, '-')}`}
+                className="bg-[#262626] p-6 rounded-lg border border-[#333333] shadow-lg"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
               >
                 <div className="text-4xl mb-4">{feature.icon}</div>
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-400">{feature.description}</p>
+                <p className="text-[#B3B3B3]">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -395,63 +382,68 @@ export default function Home() {
       {/* Pricing Section */}
       <section id="pricing" className="py-20 px-4 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900 via-[#030712] to-[#030712] opacity-60" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#333333] via-[#1A1A1A] to-[#000000] opacity-60" />
         </div>
         <div className="container mx-auto relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             {content.pricing.title}
           </h2>
-          <p className="text-xl text-center mb-12 text-gray-300">
+          <p className="text-xl text-center mb-12 text-[#B3B3B3]">
             {content.pricing.description}
           </p>
-          <div className="grid md:grid-cols-3 gap-8">
-            {content.pricing.plans.map((plan, index) => (
-              <motion.div
-                key={index}
-                className={`bg-[#0d1117] p-8 rounded-lg ${
-                  plan.popular
-                    ? "border-2 border-blue-500"
-                    : "border border-[#1e2433]"
-                } shadow-lg relative overflow-hidden`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                {plan.popular && (
-                  <div className="absolute top-0 right-0 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
-                    Popular
-                  </div>
-                )}
-                <h3 className="text-2xl font-bold mb-4">{plan.name}</h3>
-                <div className="text-4xl font-bold mb-6">
-                  ${plan.price}
-                  <span className="text-xl font-normal">/mo</span>
-                </div>
-                <ul className="mb-8 space-y-2">
-                  {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-gray-300">
-                      <Check className="w-5 h-5 mr-2 text-blue-500" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <Button
-                  className={`w-full ${
+          <div className="flex justify-center">
+            <div className="grid md:grid-cols-1 gap-8 max-w-md">
+              {content.pricing.plans.map((plan, i) => (
+                <motion.div
+                  key={`plan-${plan.name.toLowerCase().replace(/\s+/g, '-')}`}
+                  className={`bg-[#1A1A1A] p-8 rounded-lg ${
                     plan.popular
-                      ? "bg-blue-600 hover:bg-blue-700"
-                      : "bg-[#1e2433] hover:bg-[#2a3441]"
-                  } text-white rounded-full py-2 transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.5)]`}
+                      ? "border-2 border-[#FFFFFF]"
+                      : "border border-[#333333]"
+                  } shadow-lg relative overflow-hidden`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
                 >
-                  {plan.ctaText}
-                </Button>
-              </motion.div>
-            ))}
+                  {plan.popular && (
+                    <div className="absolute top-0 right-0 bg-[#FFFFFF] text-[#000000] text-xs font-bold px-3 py-1 rounded-bl-lg">
+                      Recommended
+                    </div>
+                  )}
+                  <h3 className="text-2xl font-bold mb-4 text-center">{plan.name}</h3>
+                  <div className="text-4xl font-bold mb-6 text-center">
+                    {plan.price === 0 ? "Free" : `$${plan.price}`}
+                    {plan.price > 0 && <span className="text-xl font-normal">/mo</span>}
+                  </div>
+                  <ul className="mb-8 space-y-2">
+                    {plan.features.map((feature) => (
+                      <li key={`${plan.name.toLowerCase()}-feature-${feature.replace(/\s+/g, '-').toLowerCase()}`} className="flex items-center text-[#B3B3B3]">
+                        <Check className="w-5 h-5 mr-2 text-[#FFFFFF]" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex justify-center">
+                    <Button
+                      className={`${
+                        plan.popular
+                          ? "bg-[#FFFFFF] hover:bg-[#B3B3B3] text-[#000000]"
+                          : "bg-[#333333] hover:bg-[#4D4D4D] text-white"
+                      } rounded-full py-2 transition-all duration-300 border ${plan.popular ? "border-[#FFFFFF]" : "border-[#666666]"}`}
+                    >
+                      {i === 2 ? <Github className="w-4 h-4 mr-2" /> : i === 1 ? <FileAudio className="w-4 h-4 mr-2" /> : <Headphones className="w-4 h-4 mr-2" />}
+                      {plan.ctaText}
+                    </Button>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 px-4 bg-[#0d1117]">
+      <section className="py-20 px-4 bg-[#000000]">
         <div className="container mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             {content.testimonials.title}
@@ -464,10 +456,10 @@ export default function Home() {
                   transform: `translateX(-${currentTestimonial * 100}%)`,
                 }}
               >
-                {content.testimonials.items.map((testimonial, index) => (
-                  <div key={index} className="w-full flex-shrink-0 px-4">
-                    <div className="bg-[#1a202c] p-8 rounded-lg border border-[#2d3748] shadow-lg">
-                      <p className="text-lg mb-4 italic">
+                {content.testimonials.items.map((testimonial) => (
+                  <div key={`testimonial-${testimonial.author.toLowerCase().replace(/\s+/g, '-')}`} className="w-full flex-shrink-0 px-4">
+                    <div className="bg-[#1A1A1A] p-8 rounded-lg border border-[#333333] shadow-lg">
+                      <p className="text-lg mb-4 italic text-[#B3B3B3]">
                         &ldquo;{testimonial.content}&rdquo;
                       </p>
                       <div className="flex items-center">
@@ -476,11 +468,11 @@ export default function Home() {
                           alt={testimonial.author}
                           width={48}
                           height={48}
-                          className="rounded-full mr-4"
+                          className="rounded-full mr-4 border border-[#333333]"
                         />
                         <div>
                           <p className="font-semibold">{testimonial.author}</p>
-                          <p className="text-gray-400">{testimonial.role}</p>
+                          <p className="text-[#999999]">{testimonial.role}</p>
                         </div>
                       </div>
                     </div>
@@ -494,19 +486,19 @@ export default function Home() {
       </section>
 
       {/* Integrations Section */}
-      <section className="py-20 px-4 bg-[#030712]">
+      <section className="py-20 px-4 bg-[#1A1A1A]">
         <div className="container mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             {content.integrations.title}
           </h2>
-          <p className="text-xl text-center mb-12 text-gray-400">
+          <p className="text-xl text-center mb-12 text-[#999999]">
             {content.integrations.description}
           </p>
           <div className="flex flex-wrap justify-center items-center gap-8">
-            {content.integrations.partners.map((partner, index) => (
+            {content.integrations.partners.map((partner) => (
               <div
-                key={index}
-                className="bg-[#1a202c] p-4 rounded-lg border border-[#2d3748] shadow-lg"
+                key={`partner-${partner.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '-')}`}
+                className="bg-[#262626] p-4 rounded-lg border border-[#333333] shadow-lg"
               >
                 <Image
                   src={`/placeholder.svg?height=60&width=120&text=${partner}`}
@@ -522,22 +514,22 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 px-4 bg-[#0d1117]">
+      <section id="faq" className="py-20 px-4 bg-[#000000]">
         <div className="container mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             {content.faq.title}
           </h2>
           <Accordion type="single" collapsible className="max-w-2xl mx-auto">
-            {content.faq.items.map((item, index) => (
+            {content.faq.items.map((item, i) => (
               <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="border-b border-[#2d3748]"
+                key={`faq-${item.question.toLowerCase().substring(0, 20).replace(/\s+/g, '-')}`}
+                value={`item-${i}`}
+                className="border-b border-[#333333]"
               >
                 <AccordionTrigger className="text-left">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-400">
+                <AccordionContent className="text-[#B3B3B3]">
                   {item.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -547,16 +539,17 @@ export default function Home() {
       </section>
 
       {/* CTA Banner */}
-      <section className="py-20 px-4 bg-blue-600">
+      <section className="py-20 px-4 bg-[#333333]">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             {content.cta.title}
           </h2>
-          <p className="text-xl mb-8">{content.cta.description}</p>
+          <p className="text-xl mb-8 text-[#B3B3B3]">{content.cta.description}</p>
           <Button
             size="lg"
-            className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 rounded-full font-semibold transition-all duration-300"
+            className="bg-[#FFFFFF] text-[#000000] hover:bg-[#B3B3B3] px-8 py-3 rounded-full font-semibold transition-all duration-300 flex items-center mx-auto"
           >
+            <Mic className="w-5 h-5 mr-2" />
             {content.cta.ctaText}
           </Button>
         </div>
@@ -565,38 +558,49 @@ export default function Home() {
       {/* Demo Section */}
       <section id="contact" className="py-20 px-4 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-blue-900 via-[#030712] to-[#030712] opacity-60" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-[#333333] via-[#1A1A1A] to-[#000000] opacity-60" />
         </div>
         <div className="container mx-auto relative z-10">
-          <div className="max-w-2xl mx-auto bg-[#0d1117] p-8 rounded-lg border border-[#1e2433] shadow-lg relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-50" />
+          <div className="max-w-2xl mx-auto bg-[#1A1A1A] p-8 rounded-lg border border-[#333333] shadow-lg relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#333333]/10 to-[#666666]/10 opacity-50" />
             <h2 className="text-3xl font-bold mb-4 relative z-10">
               {content.demo.title}
             </h2>
-            <p className="text-gray-300 mb-6 relative z-10">
+            <p className="text-[#B3B3B3] mb-6 relative z-10">
               {content.demo.description}
             </p>
             <form className="space-y-4 relative z-10">
-              {content.demo.fields.map((field, index) => (
-                <div key={index}>
+              {content.demo.fields.map((field) => (
+                <div key={`field-${field.name}-${field.type}`}>
                   {field.type === "textarea" ? (
                     <textarea
                       name={field.name}
                       placeholder={field.placeholder}
-                      className="w-full p-3 bg-[#1e2433] rounded-lg border border-[#2a3441] focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 text-white placeholder-gray-400"
+                      className="w-full p-3 bg-[#262626] rounded-lg border border-[#333333] focus:border-[#FFFFFF] focus:ring-1 focus:ring-[#FFFFFF] transition-all duration-300 text-white placeholder-[#999999]"
                       rows={4}
                     />
+                  ) : field.type === "file" ? (
+                    <div className="w-full p-3 bg-[#262626] rounded-lg border border-[#333333] focus-within:border-[#FFFFFF] focus-within:ring-1 focus-within:ring-[#FFFFFF] transition-all duration-300 flex items-center">
+                      <FileAudio className="w-5 h-5 mr-2 text-[#999999]" />
+                      <Input
+                        type={field.type}
+                        name={field.name}
+                        placeholder={field.placeholder}
+                        className="border-0 bg-transparent text-white placeholder-[#999999] focus-visible:ring-0 focus-visible:ring-offset-0"
+                      />
+                    </div>
                   ) : (
                     <Input
                       type={field.type}
                       name={field.name}
                       placeholder={field.placeholder}
-                      className="w-full p-3 bg-[#1e2433] rounded-lg border border-[#2a3441] focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 text-white placeholder-gray-400"
+                      className="w-full p-3 bg-[#262626] rounded-lg border border-[#333333] focus:border-[#FFFFFF] focus:ring-1 focus:ring-[#FFFFFF] transition-all duration-300 text-white placeholder-[#999999]"
                     />
                   )}
                 </div>
               ))}
-              <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-full py-3 transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+              <Button className="w-full bg-[#FFFFFF] hover:bg-[#B3B3B3] text-[#000000] rounded-full py-3 transition-all duration-300 flex items-center justify-center">
+                <Headphones className="w-5 h-5 mr-2" />
                 {content.demo.ctaText}
               </Button>
             </form>
@@ -605,7 +609,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#0d1117] py-12 px-4 border-t border-[#1e2433]">
+      <footer className="bg-[#000000] py-12 px-4 border-t border-[#333333]">
         <div className="container mx-auto grid md:grid-cols-4 gap-8">
           <div>
             <div className="text-2xl font-bold text-white flex items-center mb-4">
@@ -614,44 +618,52 @@ export default function Home() {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                aria-labelledby="whisperLogoFooter"
               >
+                <title id="whisperLogoFooter">Whisper.dev Logo</title>
                 <path
-                  d="M12 2L2 7L12 12L22 7L12 2Z"
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
                 <path
-                  d="M2 17L12 22L22 17"
+                  d="M8 12a4 4 0 0 1 8 0"
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
                 <path
-                  d="M2 12L12 17L22 12"
+                  d="M16 12a4 4 0 0 1-8 0"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M12 16v4"
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
               </svg>
-              CloudPeak
+              Whisper.dev
             </div>
-            <p className="text-gray-400">
-              CloudPeak is revolutionizing the way businesses operate with our
-              cutting-edge SaaS solutions.
+            <p className="text-[#999999]">
+              Whisper.dev is an open-source voice transcription tool that transforms speech to text with high accuracy.
             </p>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              {content.navItems.map((item, index) => (
-                <li key={index}>
+              {content.navItems.map((item) => (
+                <li key={`footer-nav-${item.toLowerCase()}`}>
                   <a
                     href={`#${item.toLowerCase()}`}
-                    className="text-gray-400 hover:text-blue-400 transition-colors"
+                    className="text-[#999999] hover:text-[#FFFFFF] transition-colors"
                   >
                     {item}
                   </a>
@@ -660,29 +672,29 @@ export default function Home() {
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
-            <p className="text-gray-400">Email: info@cloudpeak.com</p>
-            <p className="text-gray-400">Phone: (123) 456-7890</p>
+            <h3 className="text-lg font-semibold mb-4">Connect</h3>
+            <p className="text-[#999999]">GitHub: github.com/justmalhar/whisper-dev</p>
+            <p className="text-[#999999] mt-2">Twitter: @whisper_dev</p>
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
+            <h3 className="text-lg font-semibold mb-4">Stay Updated</h3>
             <form className="flex gap-2">
               <Input
                 type="email"
                 placeholder="Enter your email"
-                className="bg-[#1e2433] border-[#2a3441] text-white placeholder-gray-400"
+                className="bg-[#262626] border-[#333333] text-white placeholder-[#999999] focus:border-[#FFFFFF] focus:ring-1 focus:ring-[#FFFFFF]"
               />
               <Button
                 type="submit"
-                className="bg-blue-600 hover:bg-blue-700 text-white"
+                className="bg-[#333333] hover:bg-[#4D4D4D] text-white border border-[#666666]"
               >
                 Subscribe
               </Button>
             </form>
           </div>
         </div>
-        <div className="container mx-auto mt-8 pt-8 border-t border-[#1e2433] text-center text-gray-400">
-          <p>&copy; 2024 CloudPeak. All rights reserved.</p>
+        <div className="container mx-auto mt-8 pt-8 border-t border-[#333333] text-center text-[#999999]">
+          <p>&copy; {new Date().getFullYear()} Whisper.dev. Open-source under MIT License.</p>
         </div>
       </footer>
     </div>

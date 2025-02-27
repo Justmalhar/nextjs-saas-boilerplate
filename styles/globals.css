@@ -1,0 +1,283 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --primary: 240 10% 3.9%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .btn-3d {
+    @apply relative overflow-hidden rounded-lg bg-gradient-to-b from-slate-800 to-slate-900 
+           text-white shadow-lg transition-all duration-200
+           hover:from-slate-700 hover:to-slate-800
+           active:from-slate-900 active:to-slate-950;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px
+      rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-3d:active {
+    transform: translateY(1px);
+  }
+
+  .btn-3d::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 20%,
+      rgba(255, 255, 255, 0.1) 80%,
+      transparent 100%
+    );
+  }
+
+  .panel-3d {
+    @apply rounded-xl bg-gradient-to-b from-slate-900 to-slate-950
+           shadow-lg;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05), 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px
+      rgba(0, 0, 0, 0.1);
+  }
+
+  .input-3d {
+    @apply rounded-lg bg-slate-800 text-white shadow-inner
+           transition-all duration-200;
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .glass-panel {
+    @apply backdrop-blur-md bg-white/5;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05), 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Add these new styles for the Select component */
+  .select-3d {
+    @apply bg-slate-800 border-slate-700 text-white rounded-lg shadow-inner;
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .select-3d:focus {
+    @apply border-slate-600 ring-slate-600;
+  }
+
+  .select-content-3d {
+    @apply bg-slate-800 border-slate-700 text-white rounded-lg shadow-lg;
+  }
+
+  .select-item-3d {
+    @apply text-white hover:bg-slate-700;
+  }
+
+  .markdown-container {
+    @apply text-white text-sm leading-relaxed;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
+
+  .markdown-container::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  .markdown-container::-webkit-scrollbar-track {
+    @apply bg-transparent rounded-full;
+  }
+
+  .markdown-container::-webkit-scrollbar-thumb {
+    @apply bg-white/20 rounded-full hover:bg-white/30 transition-colors;
+  }
+
+  .markdown-container h1 {
+    @apply text-3xl font-bold mb-6 mt-8 border-b border-white/20 pb-2;
+  }
+
+  .markdown-container h2 {
+    @apply text-2xl font-semibold mb-4 mt-6;
+  }
+
+  .markdown-container h3 {
+    @apply text-xl font-medium mb-3 mt-5;
+  }
+
+  .markdown-container h4 {
+    @apply text-lg font-medium mb-2 mt-4;
+  }
+
+  .markdown-container h5 {
+    @apply text-base font-medium mb-2 mt-3;
+  }
+
+  .markdown-container h6 {
+    @apply text-sm font-medium mb-2 mt-3 uppercase tracking-wide;
+  }
+
+  .markdown-container p {
+    @apply mb-4;
+  }
+
+  .markdown-container strong {
+    @apply font-bold;
+  }
+
+  .markdown-container em {
+    @apply italic;
+  }
+
+  .markdown-container ul,
+  .markdown-container ol {
+    @apply mb-4 pl-6;
+  }
+
+  .markdown-container ul {
+    @apply list-disc;
+  }
+
+  .markdown-container ol {
+    @apply list-decimal;
+  }
+
+  .markdown-container li {
+    @apply mb-2;
+  }
+
+  .markdown-container a {
+    @apply text-blue-400 hover:underline;
+  }
+
+  .markdown-container blockquote {
+    @apply border-l-4 border-blue-500 pl-4 py-2 my-4 bg-white/5 italic;
+  }
+
+  .markdown-container code {
+    @apply bg-gray-800 rounded px-1 py-0.5 font-mono text-sm;
+  }
+
+  .markdown-container pre {
+    @apply bg-gray-800 rounded p-4 mb-4 overflow-x-auto;
+  }
+
+  .markdown-container pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .markdown-container table {
+    @apply w-full border-collapse mb-4;
+  }
+
+  .markdown-container th,
+  .markdown-container td {
+    @apply border border-gray-600 px-3 py-2;
+  }
+
+  .markdown-container th {
+    @apply bg-gray-800 font-semibold;
+  }
+
+  .markdown-container tr:nth-child(even) {
+    @apply bg-white/5;
+  }
+
+  .markdown-container img {
+    @apply max-w-full h-auto my-4 rounded-lg;
+  }
+
+  .markdown-container hr {
+    @apply my-8 border-t border-white/20;
+  }
+
+  .markdown-container .task-list-item {
+    @apply list-none;
+  }
+
+  .markdown-container .task-list-item-checkbox {
+    @apply mr-2;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .btn-3d {
+    @apply px-3 py-2 text-sm;
+  }
+
+  .panel-3d {
+    @apply rounded-lg;
+  }
+
+  .input-3d {
+    @apply text-sm;
+  }
+}
+
